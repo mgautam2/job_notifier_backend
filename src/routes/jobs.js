@@ -8,8 +8,7 @@ const router = new express.Router();
 
 router.get('/jobs/start', async (req, res) => {
   
-  jobScheduler()
-  
+  await jobScheduler(); 
   res.send();
   
 })
