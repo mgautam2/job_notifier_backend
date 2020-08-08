@@ -5,8 +5,8 @@ const moment = require('moment')
 const Jobs = require ('../models/jobs.js')
 
  function runOne (job){
-   
-  schedule.scheduleJob('45 21 7 8 * ', async function(y) { 
+   console.log("Yeah")
+  schedule.scheduleJob(job.Date, async function(y) { 
     
     var t = sendText(job.description)
     .then((message)=> {
@@ -27,11 +27,8 @@ async function JobScheduler () {
     
     try {
       const jobs = await Jobs.find({day, month})
-      // jobs.forEach(  (job )=>  runOne(job))
-      jobs.forEach(  (job )=>  {
-        console.log(job.Date)
-        console.log(moment(job.Date))
-      })
+      jobs.forEach(  (job )=>  runOne(job))
+      
     }
     catch(e) {
       console.log(error)

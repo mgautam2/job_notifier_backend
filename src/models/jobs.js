@@ -12,11 +12,11 @@ const jobSchema = new mongoose.Schema({
   },
   Date : {
     required : true,
-    type : Date,
-    validate (value) {
-      if (value <= Date.now())
-        throw new Error("Don't live in the past Man!!")
-    }
+    type : String
+    // validate (value) {
+    //   if (value <= Date.now())
+    //     throw new Error("Don't live in the past Man!!")
+    // }
   },
   description : {
     required: true,

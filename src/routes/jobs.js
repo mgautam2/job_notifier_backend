@@ -1,4 +1,5 @@
 const express = require('express');
+const moment = require('moment')
 
 const Jobs = require ('../models/jobs.js')
 const jobScheduler = require("../helper/dailyJobScheduler.js");
@@ -18,8 +19,8 @@ router.get('/jobs/start', async (req, res) => {
 
 router.post('/jobs', async (req, res) => {
   console.log(req.body.Date)
-  const job = new Jobs({...req.body,
-      Date : new Date(req.body.Date)
+  const job = new Jobs({...req.body, 
+    Date : moment(new Date(req.body.Date))
   })
   try {
     await job.save()
